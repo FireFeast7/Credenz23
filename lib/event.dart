@@ -26,7 +26,27 @@ class Event extends GetxController {
       price: 100,
     ),
     Event(
-      eventName: '1',
+      eventName: 'B-Plan',
+      price: 40,
+    ),
+    Event(
+      eventName: 'Pixelate',
+      price: 40,
+    ),
+    Event(
+      eventName: 'WebWeaver',
+      price: 40,
+    ),
+    Event(
+      eventName: 'Cretronix',
+      price: 40,
+    ),
+    Event(
+      eventName: 'WallStreet',
+      price: 40,
+    ),
+    Event(
+      eventName: 'Quiz',
       price: 40,
     ),
   ].obs;

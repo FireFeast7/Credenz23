@@ -53,10 +53,6 @@ class CartController extends GetxController {
     );
   }
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   void removeEvent(Event event) {
     _event.remove(event);

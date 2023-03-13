@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/cart_page.dart';
+import 'package:flutter_application_1/custom_button.dart';
 import 'package:flutter_application_1/event.dart';
 import 'package:flutter_application_1/stepper_controller.dart';
 import 'package:get/get.dart';
 
-class EventsList extends StatelessWidget {
-  final controller = Get.put(StepperController());
-  final cartController = Get.put(CartController());
+class EventsList extends StatefulWidget {
   EventsList({super.key});
+
+  @override
+  State<EventsList> createState() => _EventsListState();
+}
+
+class _EventsListState extends State<EventsList> {
+  final controller = Get.put(StepperController());
+
+  final cartController = Get.put(CartController());
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +32,9 @@ class EventsList extends StatelessWidget {
                 )),
           ),
           ElevatedButton(
+            style: ButtonStyle(
+              overlayColor:ButtonStyles.buttonColor,
+            ),
             onPressed: () {
               Get.to(() => CartPage());
             },
@@ -54,7 +65,7 @@ class AllEvents extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text(event.eventName),  
+              Text(event.eventName),
               Text(event.price.toString()),
               IconButton(
                 onPressed: cartController.selectedEvent.contains(event)

@@ -8,6 +8,8 @@ import 'package:get/get.dart';
 import 'package:animated_card/animated_card.dart';
 import 'package:shimmer/shimmer.dart';
 
+import 'custom_button.dart';
+
 class CartPage extends StatelessWidget {
   final controller = Get.put(StepperController());
   final cartController = Get.put(CartController());
@@ -61,6 +63,9 @@ class CartPage extends StatelessWidget {
                         topRight: Radius.circular(20),
                       ),
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          overlayColor: ButtonStyles.buttonColor,
+                        ),
                         child: Text(
                           controller
                               .getcontinueText(controller.currentpos.value),
@@ -84,6 +89,9 @@ class CartPage extends StatelessWidget {
                         bottomRight: Radius.circular(20),
                       ),
                       child: ElevatedButton(
+                        style: ButtonStyle(
+                          overlayColor: ButtonStyles.buttonColor,
+                        ),
                         child: Text(
                           controller.getCancelText(controller.currentpos.value),
                         ),
