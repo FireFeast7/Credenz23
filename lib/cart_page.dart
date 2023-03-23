@@ -19,91 +19,106 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 10,
+        elevation: 3,
         title: const Text(
           "Event Summary",
+          style: TextStyle(color: Colors.black),
         ),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
       ),
-      body: Obx(
-        () => Stepper(
-          physics: const NeverScrollableScrollPhysics(),
-          type: StepperType.horizontal,
-          margin: const EdgeInsets.all(20),
-          currentStep: controller.currentpos.value,
-          steps: allSteps(),
-          onStepContinue: () {
-            if ((controller.currentpos.value == allSteps().length - 1) ||
-                cartController.totalAmount == 0) {
-              null;
-            } else {
-              controller.currentpos.value++;
-            }
-          },
-          onStepCancel: () {
-            controller.currentpos.value == 0
-                ? null
-                : controller.currentpos.value--;
-          },
-          controlsBuilder: (BuildContext context, ControlsDetails details) {
-            return Container(
-              height: 110,
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.all(8),
-              margin: const EdgeInsets.fromLTRB(0, 15, 0, 15),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    margin: const EdgeInsets.only(bottom: 5),
-                    width: MediaQuery.of(context).size.width,
-                    height: 40,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(20),
-                        topRight: Radius.circular(20),
-                      ),
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          overlayColor: ButtonStyles.buttonColor,
-                        ),
-                        child: Text(
-                          controller
-                              .getcontinueText(controller.currentpos.value),
-                        ),
-                        onPressed: details.onStepContinue,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    width: MediaQuery.of(context).size.width,
-                    height: 3,
-                    color: Colors.black,
-                  ),
-                  Container(
-                    margin: const EdgeInsets.only(top: 5),
-                    width: MediaQuery.of(context).size.width,
-                    height: 40,
-                    child: ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        bottomLeft: Radius.circular(20),
-                        bottomRight: Radius.circular(20),
-                      ),
-                      child: ElevatedButton(
-                        style: ButtonStyle(
-                          overlayColor: ButtonStyles.buttonColor,
-                        ),
-                        child: Text(
-                          controller.getCancelText(controller.currentpos.value),
-                        ),
-                        onPressed: details.onStepCancel,
-                      ),
-                    ),
-                  ),
-                ],
+      body: Stack(
+        children: [
+          backgroundimg(context),
+          Obx(
+            () => Theme(
+              data: ThemeData(
+                canvasColor: Colors.red,
               ),
-            );
-          },
-        ),
+              child: Stepper(
+                physics: const NeverScrollableScrollPhysics(),
+                type: StepperType.horizontal,
+                margin: const EdgeInsets.all(5),
+                currentStep: controller.currentpos.value,
+                steps: allSteps(),
+                onStepContinue: () {
+                  if ((controller.currentpos.value == allSteps().length - 1) ||
+                      cartController.totalAmount == 0) {
+                    null;
+                  } else {
+                    controller.currentpos.value++;
+                  }
+                },
+                onStepCancel: () {
+                  controller.currentpos.value == 0
+                      ? null
+                      : controller.currentpos.value--;
+                },
+                controlsBuilder:
+                    (BuildContext context, ControlsDetails details) {
+                  return Container(
+                    height: 110,
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(bottom: 5),
+                          width: MediaQuery.of(context).size.width,
+                          height: 40,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                overlayColor: ButtonStyles.buttonColor,
+                              ),
+                              child: Text(
+                                controller.getcontinueText(
+                                    controller.currentpos.value),
+                              ),
+                              onPressed: details.onStepContinue,
+                            ),
+                          ),
+                        ),
+                        Container(
+                          width: MediaQuery.of(context).size.width,
+                          height: 3,
+                          color: Colors.black,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(top: 5),
+                          width: MediaQuery.of(context).size.width,
+                          height: 40,
+                          child: ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              bottomLeft: Radius.circular(20),
+                              bottomRight: Radius.circular(20),
+                            ),
+                            child: ElevatedButton(
+                              style: ButtonStyle(
+                                overlayColor: ButtonStyles.buttonColor,
+                              ),
+                              child: Text(
+                                controller
+                                    .getCancelText(controller.currentpos.value),
+                              ),
+                              onPressed: details.onStepCancel,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -241,7 +256,7 @@ class CartProductCard extends StatelessWidget {
                       cartController.removeEvent(event);
                     },
                     icon: const Icon(
-                      Icons.remove_circle,
+                      Icons.cancel,
                     )),
               ),
             ),
@@ -380,4 +395,50 @@ class FinalListCards extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget backgroundimg(BuildContext context) {
+  final StepperController controller = Get.put(StepperController());
+  return Obx(() {
+    if (controller.currentpos.value == 0) {
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/PIA12348_orig.jpg',
+            ),
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+      );
+    } else if (controller.currentpos.value == 1) {
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/PIA08653_orig.jpg',
+            ),
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+      );
+    } else {
+      return Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/PIA12348_orig.jpg',
+            ),
+            fit: BoxFit.fitHeight,
+          ),
+        ),
+      );
+    }
+  });
 }

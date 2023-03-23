@@ -53,7 +53,6 @@ class CartController extends GetxController {
     );
   }
 
-
   void removeEvent(Event event) {
     _event.remove(event);
     selectedEvent.remove(event);
