@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/cart_page.dart';
-import 'package:flutter_application_1/custom_button.dart';
-import 'package:flutter_application_1/event.dart';
-import 'package:flutter_application_1/stepper_controller.dart';
+
+import 'package:flutter_application_1/models/custom_button.dart';
+import 'package:flutter_application_1/models/event.dart';
+import 'package:flutter_application_1/controllers/stepper_controller.dart';
+import 'package:flutter_application_1/views/cartpage.dart';
 import 'package:get/get.dart';
+import 'package:flutter_application_1/controllers/Cart_Controller.dart';
 
 class EventsList extends StatefulWidget {
   EventsList({super.key});
@@ -33,7 +35,7 @@ class _EventsListState extends State<EventsList> {
           ),
           ElevatedButton(
             style: ButtonStyle(
-              overlayColor:ButtonStyles.buttonColor,
+              overlayColor: ButtonStyles.buttonColor,
             ),
             onPressed: () {
               Get.to(() => CartPage());
