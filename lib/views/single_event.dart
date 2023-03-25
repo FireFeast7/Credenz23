@@ -20,6 +20,14 @@ class _DashBoardState extends State<DashBoard> {
       ),
       body: Stack(
         children: [
+          Container(
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Image(
+              image: NetworkImage('https://i.gifer.com/fxac.gif'),
+              fit: BoxFit.fitHeight,
+            ),
+          ),
           Center(
             child: ClipPath(
               clipper: BackgroundClipper(),
@@ -58,9 +66,10 @@ class _DashBoardState extends State<DashBoard> {
             left: 75,
             top: 50,
             child: Container(
-              padding: EdgeInsets.fromLTRB(30, 20, 50, 0),
-              height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width * 0.7,
+              padding: EdgeInsets.fromLTRB(30, 10, 30, 0),
+              height: MediaQuery.of(context).size.height * 0.25,
+              width: MediaQuery.of(context).size.width * 0.65,
+              //             color: Colors.red,
               child: Column(
                 children: [
                   Hero(
