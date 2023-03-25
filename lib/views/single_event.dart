@@ -18,39 +18,64 @@ class _DashBoardState extends State<DashBoard> {
       appBar: AppBar(
         title: Text('Event Name'),
       ),
-      body: Center(
-        child: ClipPath(
-          clipper: BackgroundClipper(),
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.8,
-            width: MediaQuery.of(context).size.width * 0.9,
-            decoration: BoxDecoration(
-              color: Colors.amber,
+      body: Stack(
+        children: [
+          Center(
+            child: ClipPath(
+              clipper: BackgroundClipper(),
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.8,
+                width: MediaQuery.of(context).size.width * 0.9,
+                decoration: BoxDecoration(
+                  color: Colors.blue.withOpacity(0.7),
+                ),
+                child: Center(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('Hehe'),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text('Chinamy'),
+                      Icon(Icons.abc_outlined),
+                      Icon(Icons.ac_unit_sharp),
+                      IconButton(
+                        onPressed: () {
+                          Get.to(() => EventsList());
+                        },
+                        icon: Icon(Icons.next_plan),
+                      ),
+                      Text('Omkar'),
+                      Text('ameya')
+                    ],
+                  ),
+                ),
+              ),
             ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+          ),
+          Positioned(
+            left: 75,
+            top: 50,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(30, 20, 50, 0),
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.7,
+              child: Column(
                 children: [
-                  Text('Hehe'),
-                  SizedBox(
-                    width: 10,
+                  Hero(
+                    tag: 'wallstreet',
+                    child: Image(
+                      image: NetworkImage(
+                          'https://credenz.in/static/media/wallstreet.8165edf9.png'),
+                      fit: BoxFit.contain,
+                    ),
                   ),
-                  Text('Chinamy'),
-                  Icon(Icons.abc_outlined),
-                  Icon(Icons.ac_unit_sharp),
-                  IconButton(
-                    onPressed: () {
-                      Get.to(() => EventsList());
-                    },
-                    icon: Icon(Icons.next_plan),
-                  ),
-                  Text('Omkar'),
-                  Text('ameya')
                 ],
               ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -72,9 +97,9 @@ class BackgroundClipper extends CustomClipper<Path> {
     path.lineTo(size.width, roundnessFactor * 2);
     path.quadraticBezierTo(
         size.width - roundnessFactor * 0.5,
-        roundnessFactor * 0.5,
+        roundnessFactor * 1.15,
         size.width - roundnessFactor * 1.5,
-        roundnessFactor * 1.5);
+        roundnessFactor * 1.65);
     path.lineTo(
         roundnessFactor * 0.6, size.height * 0.33 - roundnessFactor * 0.3);
     path.quadraticBezierTo(

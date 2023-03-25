@@ -47,6 +47,7 @@ dependencies:
   shared_preferences: ^2.0.18
   get_storage: ^2.1.1
   badges: ^3.0.2
+  local_hero: ^0.2.0
 
 
 dev_dependencies:
@@ -75,6 +76,7 @@ flutter:
   assets:
      - assets/PIA08653_orig.jpg
      - assets/PIA12348_orig.jpg
+     - assets/wallstreet.8165edf9.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
