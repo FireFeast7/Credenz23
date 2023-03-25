@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/event.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/controllers/Cart_Controller.dart';
-
+ 
 import '../controllers/stepper_controller.dart';
 
 class CartProducts extends StatelessWidget {
