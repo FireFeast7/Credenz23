@@ -79,6 +79,7 @@ flutter:
      - assets/PIA08653_orig.jpg
      - assets/PIA12348_orig.jpg
      - assets/wallstreet.8165edf9.png
+     - assets/wallstreet.8165edf9-modified.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

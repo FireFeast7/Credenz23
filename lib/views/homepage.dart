@@ -41,8 +41,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           child: Hero(
             tag: 'wallstreet',
             child: Image(
-              image: NetworkImage(
-                  'https://credenz.in/static/media/wallstreet.8165edf9.png'),
+              image: AssetImage('assets/wallstreet.8165edf9.png'),
             ),
           ),
         ),
