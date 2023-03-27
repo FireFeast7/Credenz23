@@ -50,6 +50,9 @@ dependencies:
   local_hero: ^0.2.0
   glassmorphism: ^3.0.0
   glassmorphism_ui: ^0.3.0
+  shifting_tabbar: ^1.0.2
+  lottie: ^2.3.0
+  custom_floating_action_button: ^0.0.3
 
 
 dev_dependencies:
@@ -80,6 +83,10 @@ flutter:
      - assets/PIA12348_orig.jpg
      - assets/wallstreet.8165edf9.png
      - assets/wallstreet.8165edf9-modified.png
+     - assets/space.webp
+     - assets/space2.webp
+     - assets/yes1.webp
+     - assets/hourglass.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
