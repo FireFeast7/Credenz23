@@ -43,6 +43,11 @@ class CartPage extends StatelessWidget {
                 type: StepperType.horizontal,
                 margin: const EdgeInsets.all(5),
                 currentStep: controller.currentpos.value,
+                onStepTapped: (step) {
+                  if (cartController.totalAmount > 0) {
+                    controller.currentpos.value = step;
+                  }
+                },
                 steps: allSteps(),
                 // onStepTapped: (controller.currentpos) =>  Container(
                 //           width: MediaQuery.of(context).size.width,

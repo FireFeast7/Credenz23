@@ -29,7 +29,6 @@ class CartProducts extends StatelessWidget {
         height: MediaQuery.of(context).size.height * 0.63,
         child: Expanded(
           child: Container(
-            
             height: MediaQuery.of(context).size.height * 0.63 - 100,
             child: ListView.builder(
               itemCount: cartController.product.length,
@@ -81,8 +80,9 @@ class CartProductCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(20),
               gradient: LinearGradient(
                 colors: [
-                  Color(0xFF00ba69),
-                  Colors.green.shade500,
+                  //   Color(0xFF00ba69),
+                  Colors.white,
+                  //  Colors.green.shade500,
                   Colors.transparent,
                 ],
               ),

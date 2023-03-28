@@ -90,8 +90,8 @@ Widget showContainer1(BuildContext context, ControlsDetails detail) {
       height: 40,
       child: ClipRRect(
         borderRadius: const BorderRadius.only(
-          bottomLeft: Radius.circular(20),
-          bottomRight: Radius.circular(20),
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
         child: ElevatedButton(
           style: ButtonStyle(
