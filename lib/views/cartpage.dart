@@ -18,6 +18,8 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    controller.currentpos.value = 0;
+    //  int step = controller.currentpos.value;
     return Scaffold(
       appBar: AppBar(
         elevation: 3,
@@ -42,6 +44,33 @@ class CartPage extends StatelessWidget {
                 margin: const EdgeInsets.all(5),
                 currentStep: controller.currentpos.value,
                 steps: allSteps(),
+                // onStepTapped: (controller.currentpos) =>  Container(
+                //           width: MediaQuery.of(context).size.width,
+                //           height: 3,
+                //           color: Colors.black,
+                //         ),
+                //         Container(
+                //           margin: const EdgeInsets.only(top: 5),
+                //           width: MediaQuery.of(context).size.width,
+                //           height: 40,
+                //           child: ClipRRect(
+                //             borderRadius: const BorderRadius.only(
+                //               bottomLeft: Radius.circular(20),
+                //               bottomRight: Radius.circular(20),
+                //             ),
+                //             child: ElevatedButton(
+                //               style: ButtonStyle(
+                //                 overlayColor: ButtonStyles.buttonColor,
+                //               ),
+                //               child: Text(
+                //                 controller
+                //                     .getCancelText(controller.currentpos.value),
+                //               ),
+                //               onPressed: details.onStepCancel,
+                //             ),
+                //           ),
+                //         ),
+
                 onStepContinue: () {
                   if ((controller.currentpos.value == allSteps().length - 1) ||
                       cartController.totalAmount == 0) {
@@ -57,6 +86,7 @@ class CartPage extends StatelessWidget {
                 },
                 controlsBuilder:
                     (BuildContext context, ControlsDetails details) {
+                  ControlsDetails detail = details;
                   return Container(
                     height: 110,
                     width: MediaQuery.of(context).size.width,
@@ -65,53 +95,55 @@ class CartPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Container(
-                          margin: const EdgeInsets.only(bottom: 5),
-                          width: MediaQuery.of(context).size.width,
-                          height: 40,
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20),
-                            ),
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                overlayColor: ButtonStyles.buttonColor,
-                              ),
-                              child: Text(
-                                controller.getcontinueText(
-                                    controller.currentpos.value),
-                              ),
-                              onPressed: details.onStepContinue,
-                            ),
-                          ),
-                        ),
-                        Container(
-                          width: MediaQuery.of(context).size.width,
-                          height: 3,
-                          color: Colors.black,
-                        ),
-                        Container(
-                          margin: const EdgeInsets.only(top: 5),
-                          width: MediaQuery.of(context).size.width,
-                          height: 40,
-                          child: ClipRRect(
-                            borderRadius: const BorderRadius.only(
-                              bottomLeft: Radius.circular(20),
-                              bottomRight: Radius.circular(20),
-                            ),
-                            child: ElevatedButton(
-                              style: ButtonStyle(
-                                overlayColor: ButtonStyles.buttonColor,
-                              ),
-                              child: Text(
-                                controller
-                                    .getCancelText(controller.currentpos.value),
-                              ),
-                              onPressed: details.onStepCancel,
-                            ),
-                          ),
-                        ),
+                        showContainer1(context, detail),
+                        // Container(
+                        //   margin: const EdgeInsets.only(bottom: 5),
+                        //   width: MediaQuery.of(context).size.width,
+                        //   height: 40,
+                        //   child: ClipRRect(
+                        //     borderRadius: const BorderRadius.only(
+                        //       topLeft: Radius.circular(20),
+                        //       topRight: Radius.circular(20),
+                        //     ),
+                        //     child: ElevatedButton(
+                        //       style: ButtonStyle(
+                        //         overlayColor: ButtonStyles.buttonColor,
+                        //       ),
+                        //       child: Text(
+                        //         controller.getcontinueText(
+                        //             controller.currentpos.value),
+                        //       ),
+                        //       onPressed: details.onStepContinue,
+                        //     ),
+                        //   ),
+                        // ),
+                        // Container(
+                        //   width: MediaQuery.of(context).size.width,
+                        //   height: 3,
+                        //   color: Colors.black,
+                        // ),
+                        // Container(
+                        //   margin: const EdgeInsets.only(top: 5),
+                        //   width: MediaQuery.of(context).size.width,
+                        //   height: 40,
+                        //   child: ClipRRect(
+                        //     borderRadius: const BorderRadius.only(
+                        //       bottomLeft: Radius.circular(20),
+                        //       bottomRight: Radius.circular(20),
+                        //     ),
+                        //     child: ElevatedButton(
+                        //       style: ButtonStyle(
+                        //         overlayColor: ButtonStyles.buttonColor,
+                        //       ),
+                        //       child: Text(
+                        //         controller
+                        //             .getCancelText(controller.currentpos.value),
+                        //       ),
+                        //       onPressed: details.onStepCancel,
+                        //     ),
+                        //   ),
+                        // ),
+                        showContainer2(context, detail),
                       ],
                     ),
                   );
