@@ -25,52 +25,52 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      home: MyHomePage(),
     );
   }
 }
 
-// class MyHomePage extends StatelessWidget {
-//   final controller = Get.put(StepperController());
-//   final cartController = Get.put(CartController());
-//   MyHomePage({super.key});
+class MyHomePage extends StatelessWidget {
+  final controller = Get.put(StepperController());
+  final cartController = Get.put(CartController());
+  MyHomePage({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text(
-//           "To A Cart Page",
-//         ),
-//       ),
-//       floatingActionButton: Obx(
-//         () => Stack(
-//           children: [
-//             FloatingActionButton(
-//               onPressed: () {
-//                 Get.to(
-//                   () => EventsList(),
-//                 );
-//               },
-//               child: Icon(
-//                 Icons.shopping_cart_rounded,
-//               ),
-//             ),
-//             Badge(
-//               largeSize: 17,
-//               backgroundColor: Colors.black,
-//               label: cartController.selectedEvent.isNotEmpty
-//                   ? Text(
-//                       cartController.selectedEvent.length.toString(),
-//                     )
-//                   : Text("0"),
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          "To A Cart Page",
+        ),
+      ),
+      floatingActionButton: Obx(
+        () => Stack(
+          children: [
+            FloatingActionButton(
+              onPressed: () {
+                Get.to(
+                  () => EventsList(),
+                );
+              },
+              child: Icon(
+                Icons.shopping_cart_rounded,
+              ),
+            ),
+            Badge(
+              largeSize: 17,
+              backgroundColor: Colors.black,
+              label: cartController.selectedEvent.isNotEmpty
+                  ? Text(
+                      cartController.selectedEvent.length.toString(),
+                    )
+                  : Text("0"),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 // class MyHomePage extends StatefulWidget {
 //   final String title;

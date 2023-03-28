@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/event.dart';
 import 'package:get/get.dart';
 import 'package:flutter_application_1/controllers/Cart_Controller.dart';
- 
+
 import '../controllers/stepper_controller.dart';
 
 class CartProducts extends StatelessWidget {
@@ -17,8 +17,8 @@ class CartProducts extends StatelessWidget {
       return Container(
         height: 500,
         child: const Image(
-          image: NetworkImage(
-            "https://shop.millenniumbooksource.com/static/images/cart1.png",
+          image: AssetImage(
+            "assets/img1.jpg",
           ),
           fit: BoxFit.fill,
         ),
@@ -78,9 +78,15 @@ class CartProductCard extends StatelessWidget {
             decoration: BoxDecoration(
               border: Border.all(color: Colors.green),
               borderRadius: BorderRadius.circular(20),
-              color: Colors.amber,
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xFF00ba69),
+                  Colors.green.shade500,
+                  Colors.transparent,
+                ],
+              ),
             ),
-            height: 150,
+            height: 100,
             child: Center(
               child: CheckboxListTile(
                 onChanged: (value) {
@@ -92,12 +98,14 @@ class CartProductCard extends StatelessWidget {
                 ),
                 controlAffinity: ListTileControlAffinity.leading,
                 secondary: IconButton(
-                    onPressed: () {
-                      cartController.removeEvent(event);
-                    },
-                    icon: const Icon(
-                      Icons.cancel,
-                    )),
+                  onPressed: () {
+                    cartController.removeEvent(event);
+                  },
+                  icon: const Icon(
+                    Icons.cancel,
+                  ),
+                  color: Colors.green,
+                ),
               ),
             ),
           ),

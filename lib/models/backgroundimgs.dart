@@ -13,7 +13,7 @@ Widget backgroundimg(BuildContext context) {
         decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage(
-              'assets/PIA12348_orig.jpg',
+              'assets/img1.jpg',
             ),
             fit: BoxFit.fitHeight,
           ),
