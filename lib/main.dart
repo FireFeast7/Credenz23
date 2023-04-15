@@ -4,12 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/Cart_Controller.dart';
 import 'package:flutter_application_1/controllers/stepper_controller.dart';
 import 'package:flutter_application_1/views/events_page.dart';
-import 'package:flutter_application_1/views/homepage.dart';
-import 'package:flutter_application_1/views/single_event.dart';
-import 'package:flutter_zoom_drawer/config.dart';
-import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
+
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
+
 
 Future<void> main() async {
   runApp(MyApp());

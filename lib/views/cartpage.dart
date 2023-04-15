@@ -4,11 +4,10 @@ import 'package:flutter_application_1/models/custom_button.dart';
 import 'package:flutter_application_1/models/event.dart';
 import 'package:flutter_application_1/views/cart_total.dart';
 import 'package:flutter_application_1/views/cartproducts.dart';
-import 'package:flutter_application_1/views/events_page.dart';
+
 import 'package:flutter_application_1/controllers/stepper_controller.dart';
 import 'package:get/get.dart';
-import 'package:animated_card/animated_card.dart';
-import 'package:shimmer/shimmer.dart';
+
 import 'package:flutter_application_1/controllers/Cart_Controller.dart';
 
 class CartPage extends StatelessWidget {
@@ -21,23 +20,39 @@ class CartPage extends StatelessWidget {
     controller.currentpos.value = 0;
     //  int step = controller.currentpos.value;
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      resizeToAvoidBottomInset: false,
+      extendBody: true,
       appBar: AppBar(
-        elevation: 3,
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+        elevation: 0,
         title: const Text(
-          "Event Summary",
-          style: TextStyle(color: Colors.black),
+          "MY CART",
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.white,
+            fontFamily: 'Mars Bold',
+          ),
         ),
         centerTitle: true,
-        backgroundColor: Colors.transparent,
       ),
       body: Stack(
         children: [
           backgroundimg(context),
           Obx(
-            () => Theme(
-              data: ThemeData(
-                canvasColor: Colors.red,
-              ),
+            () => Container(
+              color: Colors.transparent,
+              margin: const EdgeInsets.fromLTRB(5, 90, 5, 5),
               child: Stepper(
                 physics: const NeverScrollableScrollPhysics(),
                 type: StepperType.horizontal,
@@ -49,33 +64,6 @@ class CartPage extends StatelessWidget {
                   }
                 },
                 steps: allSteps(),
-                // onStepTapped: (controller.currentpos) =>  Container(
-                //           width: MediaQuery.of(context).size.width,
-                //           height: 3,
-                //           color: Colors.black,
-                //         ),
-                //         Container(
-                //           margin: const EdgeInsets.only(top: 5),
-                //           width: MediaQuery.of(context).size.width,
-                //           height: 40,
-                //           child: ClipRRect(
-                //             borderRadius: const BorderRadius.only(
-                //               bottomLeft: Radius.circular(20),
-                //               bottomRight: Radius.circular(20),
-                //             ),
-                //             child: ElevatedButton(
-                //               style: ButtonStyle(
-                //                 overlayColor: ButtonStyles.buttonColor,
-                //               ),
-                //               child: Text(
-                //                 controller
-                //                     .getCancelText(controller.currentpos.value),
-                //               ),
-                //               onPressed: details.onStepCancel,
-                //             ),
-                //           ),
-                //         ),
-
                 onStepContinue: () {
                   if ((controller.currentpos.value == allSteps().length - 1) ||
                       cartController.totalAmount == 0) {
@@ -101,53 +89,6 @@ class CartPage extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         showContainer1(context, detail),
-                        // Container(
-                        //   margin: const EdgeInsets.only(bottom: 5),
-                        //   width: MediaQuery.of(context).size.width,
-                        //   height: 40,
-                        //   child: ClipRRect(
-                        //     borderRadius: const BorderRadius.only(
-                        //       topLeft: Radius.circular(20),
-                        //       topRight: Radius.circular(20),
-                        //     ),
-                        //     child: ElevatedButton(
-                        //       style: ButtonStyle(
-                        //         overlayColor: ButtonStyles.buttonColor,
-                        //       ),
-                        //       child: Text(
-                        //         controller.getcontinueText(
-                        //             controller.currentpos.value),
-                        //       ),
-                        //       onPressed: details.onStepContinue,
-                        //     ),
-                        //   ),
-                        // ),
-                        // Container(
-                        //   width: MediaQuery.of(context).size.width,
-                        //   height: 3,
-                        //   color: Colors.black,
-                        // ),
-                        // Container(
-                        //   margin: const EdgeInsets.only(top: 5),
-                        //   width: MediaQuery.of(context).size.width,
-                        //   height: 40,
-                        //   child: ClipRRect(
-                        //     borderRadius: const BorderRadius.only(
-                        //       bottomLeft: Radius.circular(20),
-                        //       bottomRight: Radius.circular(20),
-                        //     ),
-                        //     child: ElevatedButton(
-                        //       style: ButtonStyle(
-                        //         overlayColor: ButtonStyles.buttonColor,
-                        //       ),
-                        //       child: Text(
-                        //         controller
-                        //             .getCancelText(controller.currentpos.value),
-                        //       ),
-                        //       onPressed: details.onStepCancel,
-                        //     ),
-                        //   ),
-                        // ),
                         showContainer2(context, detail),
                       ],
                     ),
@@ -165,7 +106,7 @@ class CartPage extends StatelessWidget {
     return [
       Step(
         title: const Text(
-          "Events List",
+          "",
           style: TextStyle(fontSize: 13),
         ),
         content: CartProducts(),
@@ -177,7 +118,7 @@ class CartPage extends StatelessWidget {
       ),
       Step(
         title: const Text(
-          "CheckOut",
+          "",
           style: TextStyle(fontSize: 13),
         ),
         content: CartTotal(),
@@ -188,7 +129,7 @@ class CartPage extends StatelessWidget {
       ),
       Step(
         title: const Text(
-          "Payment",
+          "",
           style: TextStyle(fontSize: 13),
         ),
         content: Container(
