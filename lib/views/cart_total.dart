@@ -139,6 +139,7 @@ class _FinalListCardsState extends State<FinalListCards> {
       transform: Matrix4.translationValues(
           startAnimation ? 0 : MediaQuery.of(context).size.width, 0, 0),
       child: Card(
+        color: Colors.transparent,
         margin: EdgeInsets.fromLTRB(0, 30, 0, 0),
         shape: RoundedRectangleBorder(
           side: const BorderSide(color: Colors.white70, width: 1),
@@ -159,9 +160,9 @@ class _FinalListCardsState extends State<FinalListCards> {
                     margin: const EdgeInsets.all(20),
                     child: const CircleAvatar(
                       radius: 30,
-                      child: Image(
-                        image: AssetImage('assets/wallstreet.8165edf9.png'),
-                      ),
+                      // child: Image(
+                      //   image: AssetImage('assets/wallstreet.8165edf9.png'),
+                      // ),
                     ),
                   ),
                   const SizedBox(
@@ -180,6 +181,7 @@ class _FinalListCardsState extends State<FinalListCards> {
                           fontFamily: 'OxaniumLight',
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
                       ),
                     ],
@@ -195,6 +197,7 @@ class _FinalListCardsState extends State<FinalListCards> {
                 style: const TextStyle(
                   fontFamily: 'OxaniumLight',
                   fontSize: 16,
+                  color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),
               ),

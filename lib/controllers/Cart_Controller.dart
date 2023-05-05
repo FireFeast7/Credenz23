@@ -7,6 +7,15 @@ import 'package:get_storage/get_storage.dart';
 class CartController extends GetxController {
   final _event = <Event>[].obs;
   var selectedEvent = <Event>[].obs;
+  RxBool emptyCart = true.obs;
+
+  void showBar(RxList<Event> list) {
+    if (list.isNotEmpty) {
+      emptyCart.value = false;
+    } else {
+      emptyCart.value = true;
+    }
+  }
 
   void addEvent(Event event) {
     _event.add(event);
@@ -39,4 +48,11 @@ class CartController extends GetxController {
 
   double get totalAmount =>
       selectedEvent.fold(0.0, (sum, product) => sum + product.price);
+}
+
+class PaymentController extends GetxController {
+  var showQR = false.obs;
+  RxString payment = ''.obs;
+  RxBool isTextFieldEnabled = false.obs;
+  RxBool showlink = false.obs;
 }

@@ -7,7 +7,6 @@ import 'package:flutter_application_1/views/events_page.dart';
 
 import 'package:get/get.dart';
 
-
 Future<void> main() async {
   runApp(MyApp());
 }
@@ -66,7 +65,7 @@ class MyHomePage extends StatelessWidget {
         ),
       ),
     );
-  }
+  } 
 }
 
 // class MyHomePage extends StatefulWidget {

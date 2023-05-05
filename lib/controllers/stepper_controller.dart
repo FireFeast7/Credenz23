@@ -4,7 +4,7 @@ class StepperController extends GetxController {
   var currentpos = 0.obs;
   var complete = false.obs;
 
-  final List<String> _continueText = ["Checkout", "Final Payment", "Payment"];
+  final List<String> _continueText = ["Checkout", "Final Payment", "Pay Here"];
   final List<String> _cancelText = ["Events Page", "Events List", "Checkout"];
   String getcontinueText(int currentpos) {
     if (currentpos < _continueText.length) {

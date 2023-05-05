@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/controllers/Cart_Controller.dart';
 import 'package:flutter_application_1/models/custom_button.dart';
+import 'package:flutter_application_1/views/transactionid.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:glassmorphism_ui/glassmorphism_ui.dart';
@@ -21,26 +22,22 @@ Widget backgroundimg(BuildContext context) {
       );
     } else if (controller.currentpos.value == 1) {
       return GlassImage(
-        blur: 1,
+        blur: 2,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         image: const Image(
-          image: AssetImage('assets/space.jpg'),
+          image: AssetImage('assets/space3.jpg'),
           fit: BoxFit.fitHeight,
         ),
       );
     } else {
-      return Container(
+      return GlassImage(
+        blur: 2,
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        decoration: const BoxDecoration(
-          // image: DecorationImage(
-          //   image: AssetImage(
-          //     'assets/PIA12348_orig.jpg',
-          //   ),
-          //   fit: BoxFit.fitHeight,
-          // ),
-          color: Colors.white,
+        image: const Image(
+          image: AssetImage('assets/3.jpg'),
+          fit: BoxFit.fitHeight,
         ),
       );
     }
@@ -58,29 +55,90 @@ Widget showContainer2(BuildContext context, ControlsDetails detail) {
       height: 0,
     );
   } else {
-    return Container(
-      margin: const EdgeInsets.only(top: 5),
-      width: MediaQuery.of(context).size.width,
-      height: 40,
-      child: ClipRRect(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
-        ),
-        child: ElevatedButton(
-          style: ButtonStyle(
-            overlayColor: ButtonStyles.buttonColor,
-          ),
-          onPressed: detail.onStepCancel,
-          child: Text(
-            controller.getCancelText(controller.currentpos.value),
-            style: const TextStyle(
-              fontSize: 17,
-              color: Colors.white,
-              fontFamily: 'OxaniumLight',
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Container(
+          //   margin: const EdgeInsets.only(top: 5),
+          width: MediaQuery.of(context).size.width * 0.35,
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 35),
+          height: 80,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
+            ),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              onPressed: detail.onStepCancel,
+              child: Row(
+                //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    child: const Icon(
+                      Icons.arrow_back_rounded,
+                      size: 25,
+                    ),
+                  ),
+                  Text(
+                    controller.getCancelText(controller.currentpos.value),
+                    style: const TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontFamily: 'OxaniumLight',
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
+        Container(
+          //   margin: const EdgeInsets.only(top: 5),
+          width: MediaQuery.of(context).size.width * 0.43,
+          padding: const EdgeInsets.fromLTRB(0, 0, 0, 35),
+          height: 80,
+          child: ClipRRect(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
+            ),
+            child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
+              ),
+              onPressed: () {
+                Get.to(() => TransactionId());
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Transaction Id",
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.white,
+                      fontFamily: 'OxaniumLight',
+                    ),
+                  ),
+                  // SizedBox(
+                  //   width: 5,
+                  // ),
+                  Container(
+                    margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    child: const Icon(Icons.arrow_forward_rounded, size: 20),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
@@ -236,24 +294,8 @@ Widget showContainer1(BuildContext context, ControlsDetails detail) {
       ),
     );
   } else {
-    return Container(
-      margin: const EdgeInsets.only(top: 5),
-      width: MediaQuery.of(context).size.width,
-      height: 40,
-      child: ClipRRect(
-        borderRadius: const BorderRadius.all(
-          Radius.circular(20),
-        ),
-        child: ElevatedButton(
-          style: ButtonStyle(
-            overlayColor: ButtonStyles.buttonColor,
-          ),
-          onPressed: detail.onStepContinue,
-          child: Text(
-            controller.getcontinueText(controller.currentpos.value),
-          ),
-        ),
-      ),
+    return const SizedBox(
+      height: 0,
     );
   }
 }

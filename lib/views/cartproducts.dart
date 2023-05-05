@@ -8,64 +8,72 @@ import 'package:lazy_load_scrollview/lazy_load_scrollview.dart';
 import '../controllers/stepper_controller.dart';
 
 class CartProducts extends StatelessWidget {
-  CartProducts({super.key});
+  CartProducts({Key? key}) : super(key: key);
   final controller = Get.put(StepperController());
   final cartController = Get.put(CartController());
+
   @override
   Widget build(BuildContext context) {
-    if (cartController.product.length == 0) {
-      return Container(
-        height: 500,
-        child: const Image(
-          image: AssetImage(
-            "assets/img1.jpg",
-          ),
-          fit: BoxFit.fill,
-        ),
-      );
-    }
     return Obx(
-      () => Column(
-        children: [
-          Container(
-            height: MediaQuery.of(context).size.height * 0.05,
-            width: MediaQuery.of(context).size.width,
-            color: Colors.transparent,
-            child: const Center(
-              child: Text(
-                'Events List',
+      () {
+        if (cartController.product.length == 0) {
+          return Container(
+            height: MediaQuery.of(context).size.height * 0.58,
+            child: Center(
+              child: const Text(
+                'Cart Is Empty ',
                 style: TextStyle(
-                  fontFamily: 'OxaniumLight',
-                  fontSize: 20,
+                  fontSize: 18,
                   color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                  decoration: TextDecoration.underline,
+                  fontFamily: 'Mars Bold',
                 ),
               ),
             ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height * 0.58,
-            child: ListView.separated(
-              physics: const BouncingScrollPhysics(),
-              itemCount: cartController.product.length,
-              itemBuilder: (
-                BuildContext context,
-                int index,
-              ) {
-                final event = cartController.product[index];
-                return CartProductCard(
-                  controller: cartController,
-                  index: index,
-                  event: event,
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) =>
-                  const SizedBox(height: 10),
-            ),
-          ),
-        ],
-      ),
+          );
+        } else {
+          return Column(
+            children: [
+              Container(
+                height: MediaQuery.of(context).size.height * 0.05,
+                width: MediaQuery.of(context).size.width,
+                color: Colors.transparent,
+                child: const Center(
+                  child: Text(
+                    'Events List',
+                    style: TextStyle(
+                      fontFamily: 'OxaniumLight',
+                      fontSize: 20,
+                      color: Colors.white,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
+              ),
+              Container(
+                height: MediaQuery.of(context).size.height * 0.58,
+                child: ListView.separated(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: cartController.product.length,
+                  itemBuilder: (
+                    BuildContext context,
+                    int index,
+                  ) {
+                    final event = cartController.product[index];
+                    return CartProductCard(
+                      controller: cartController,
+                      index: index,
+                      event: event,
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const SizedBox(height: 10),
+                ),
+              ),
+            ],
+          );
+        }
+      },
     );
   }
 }
