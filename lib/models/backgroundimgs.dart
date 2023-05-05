@@ -113,7 +113,7 @@ Widget showContainer2(BuildContext context, ControlsDetails detail) {
                 ),
               ),
               onPressed: () {
-                Get.to(() => TransactionId());
+              
               },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

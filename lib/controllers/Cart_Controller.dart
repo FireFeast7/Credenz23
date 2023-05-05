@@ -51,8 +51,9 @@ class CartController extends GetxController {
 }
 
 class PaymentController extends GetxController {
-  var showQR = false.obs;
+  RxBool showQR = false.obs;
   RxString payment = ''.obs;
-  RxBool isTextFieldEnabled = false.obs;
-  RxBool showlink = false.obs;
+
+  RxBool success = false.obs;
+  Rx<TextEditingController> id = TextEditingController().obs;
 }
